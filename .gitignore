@@ -235,3 +235,6 @@ htmlcov/
 
 # pyenv
 # .python-version
+python/data
+
+python/scripts/debug_output/
