@@ -1,0 +1,29 @@
+{
+  "expressions": [
+    {
+      "name": "Smile",
+      "betas": "300:2"
+    },
+    {
+      "name": "Angry",
+      "betas": "302:6"
+    },
+    {
+      "name": "Lips SHIFT",
+      "betas": "301:4"
+    },
+    {
+      "name": "Exp00",
+      "betas": "306:6"
+    },
+    {
+      "name": "Exp01",
+      "betas": "305:6"
+    },
+    {
+      "name": "Exp02",
+      "betas": "303:6"
+    }
+  ],
+  "muscles": 8
+}

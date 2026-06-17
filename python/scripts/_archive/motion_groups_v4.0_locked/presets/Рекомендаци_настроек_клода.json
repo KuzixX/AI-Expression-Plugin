@@ -1,0 +1,21 @@
+{
+  "shape": "0: Нейтральная",
+  "expr": "1: Экспрессия A (300)",
+  "custom_betas": "",
+  "time": "0.004",
+  "steps": "60",
+  "fps": "24",
+  "position_weight": "0.0",
+  "n_clusters": "3",
+  "heat_threshold": "0.15",
+  "smooth_iters": "3",
+  "smooth_alpha": "0.5",
+  "n_anchors": "20",
+  "fbx_path": "/Users/kuzix/Documents/GitHub/Muscle-autoskinner/Muscle-autoskinner/Assets/Meshes/Reference/uploads-files-2473520-head_fbx.fbx",
+  "geodesic_factor": "1.5",
+  "assign_mode": "voronoi",
+  "n_eigs": "128",
+  "n_scales": "16",
+  "w_geo": "1.0",
+  "w_sig": "1.0"
+}
