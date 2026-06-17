@@ -53,7 +53,7 @@ from sklearn.cluster import KMeans
 # Абсолютный путь к FLAME (привязан к корню репо через __file__) — работает из
 # любого cwd. Этот файл лежит в <repo>/python/scripts/motion_groups_v6/.
 _REPO_ROOT = Path(__file__).resolve().parents[3]
-FLAME_PKL = str(_REPO_ROOT / "Muscle-autoskinner/Assets/Meshes/FLAME/"
+FLAME_PKL = str(_REPO_ROOT / "Assets/Meshes/FLAME/"
                              "FLAME2023 Open for commercial use/flame2023_Open.pkl")
 
 

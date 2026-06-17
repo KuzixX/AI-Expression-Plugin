@@ -26,8 +26,8 @@ import open3d.visualization.gui as gui
 import open3d.visualization.rendering as rendering
 
 
-FLAME_PKL = ("Muscle-autoskinner/Assets/Meshes/FLAME/"
-             "FLAME2023 Open for commercial use/flame2023_Open.pkl")
+FLAME_PKL = str(Path(__file__).resolve().parents[3] / "Assets/Meshes/FLAME/"
+                "FLAME2023 Open for commercial use/flame2023_Open.pkl")
 
 SHAPE_START = 0
 EXPR_START = 300            # в FLAME 2023 экспрессии начинаются с индекса 300
