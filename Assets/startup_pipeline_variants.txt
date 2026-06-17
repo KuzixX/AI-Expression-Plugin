@@ -1,0 +1,107 @@
+== STARTUP / COMPOSITION ROOT — ВАРИАНТЫ ГИБКОЙ АРХИТЕКТУРЫ ==
+
+Идея: Один объект StartUp который принимает список всех драйверов, калибрешин дату,
+стрим лендмарков и т.п. Дёргает метод Apply в Update и передаёт зависимости.
+
+
+--- ВАРИАНТ 1: Два списка — Processors + Drivers ---
+
+Самый прагматичный. Два явных этапа — сначала обработка данных, потом драйверы костей.
+
+    public class StartUp : MonoBehaviour
+    {
+        [SerializeField] private MonoBehaviour _landmarkSource;  // ILandmarkSource
+        [SerializeField] private MonoBehaviour[] _processors;     // IProcessor[]
+        [SerializeField] private MonoBehaviour[] _drivers;        // IFaceDriver[]
+
+        private void Update()
+        {
+            var frame = ((ILandmarkSource)_landmarkSource).CaptureFrame();
+
+            foreach (var p in _processors)
+                ((IProcessor)p).Process(frame);
+
+            foreach (var d in _drivers)
+                ((IFaceDriver)d).Apply();
+        }
+    }
+
+Плюс: Понятно, просто, инспектор наглядный — вот входные данные, вот обработка, вот выход.
+Минус: Два списка — жёстко. Если завтра появится третья фаза (запись, пост-процесс) — добавляешь ещё список.
+
+
+--- ВАРИАНТ 2: Единый pipeline из шагов (IPipelineStep) ---
+
+Один интерфейс, один список, порядок = порядок в массиве.
+
+    public interface IPipelineStep
+    {
+        void Execute();
+    }
+
+    public class StartUp : MonoBehaviour
+    {
+        [SerializeField] private MonoBehaviour[] _steps;  // IPipelineStep[]
+
+        private void Update()
+        {
+            foreach (var step in _steps)
+                ((IPipelineStep)step).Execute();
+        }
+    }
+
+SStreamMCActivationRAW — шаг. SJawDriver — шаг. AnimationRecorder — шаг.
+Всё в одном списке, порядок перетаскиванием в инспекторе.
+
+Плюс: Максимально гибко. Добавил новый шаг — кинул в список. Порядок меняешь мышкой.
+Минус: Нет явного разделения «это процессинг, это драйвер» — всё выглядит одинаково. Нужна дисциплина.
+
+
+--- ВАРИАНТ 3: ScriptableObject-пайплайн (как Render Pipeline) ---
+
+Шаги — это ScriptableObject'ы. Пайплайн — ассет который можно свапнуть целиком.
+
+    public abstract class PipelineStepAsset : ScriptableObject
+    {
+        public abstract IPipelineStep CreateStep();
+    }
+
+    [CreateAssetMenu(menuName = "FaceRig/Pipeline")]
+    public class FaceRigPipeline : ScriptableObject
+    {
+        public PipelineStepAsset[] steps;
+    }
+
+    public class StartUp : MonoBehaviour
+    {
+        [SerializeField] private FaceRigPipeline _pipeline;
+        private IPipelineStep[] _runtimeSteps;
+
+        private void Start()
+        {
+            _runtimeSteps = _pipeline.steps
+                .Select(s => s.CreateStep())
+                .ToArray();
+        }
+
+        private void Update()
+        {
+            foreach (var step in _runtimeSteps)
+                step.Execute();
+        }
+    }
+
+Плюс: Пайплайн = ассет. Можно иметь Pipeline_MediaPipe.asset, Pipeline_Playback.asset,
+Pipeline_Debug.asset и переключать одним полем. Разные персонажи — разные пайплайны.
+Минус: Оверкилл сейчас. Много бойлерплейта. Шаги не видят сцену напрямую
+(нужен контекст-объект для передачи данных между шагами).
+
+
+--- РЕКОМЕНДАЦИЯ ---
+
+Начать с варианта 2 (единый IPipelineStep список). Даёт 90% гибкости варианта 3,
+но без бойлерплейта. Драйверы уже MonoBehaviour — просто добавляешь IPipelineStep
+к существующим классам, убираешь из них Update(), и всё.
+
+Если потом реально понадобится свапать целые пайплайны как ассеты — перейти
+на вариант 3 будет несложно, интерфейс тот же.

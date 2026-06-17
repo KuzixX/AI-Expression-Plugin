@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4de53581e33243f8bb5d0cee963bb6f, type: 3}
+  m_Name: Smoothing Step Asset
+  m_EditorClassIdentifier: Assembly-CSharp::FaceMuscle.FaceRigPipeline.Core.SmoothingStepAsset
+  _smoothing: 0.35
+  _irisSmooothing: 0.6
+  _irisClamp: 1

@@ -1,0 +1,182 @@
+{
+  "act_lZygomaticusMajorLandmark": {
+    "min": 0.0,
+    "max": 0.17980000376701355
+  },
+  "act_lDepressorAnguliOrisLandmark": {
+    "min": 0.0,
+    "max": 0.29100000858306885
+  },
+  "act_lRisoriusLandmark": {
+    "min": 0.0,
+    "max": 0.2307399958372116
+  },
+  "act_OrbicularisOrisCenter": {
+    "min": 0.0,
+    "max": 0.17231999337673187
+  },
+  "act_rZygomaticusMajorLandmark": {
+    "min": 0.0,
+    "max": 0.17136000096797943
+  },
+  "act_rDepressorAnguliOrisLandmark": {
+    "min": 0.0,
+    "max": 0.22100000083446503
+  },
+  "act_rRisoriusLandmark": {
+    "min": 0.0,
+    "max": 0.1914999932050705
+  },
+  "act_lFrontalisInsideLandmark": {
+    "min": 0.0,
+    "max": 0.1594800055027008
+  },
+  "act_LCorrugatorSuperciliiLandmark": {
+    "min": 0.0,
+    "max": 0.21543000638484955
+  },
+  "act_rFrontalisInsideLandmark": {
+    "min": 0.0,
+    "max": 0.15444999933242798
+  },
+  "act_RCorrugatorSuperciliiLandmark": {
+    "min": 0.0,
+    "max": 0.2016499936580658
+  },
+  "act_RLevatorLabiiSuperiorisLandmark": {
+    "min": 0.0,
+    "max": 0.13398000597953796
+  },
+  "act_LLevatorLabiiSuperiorisLandmark": {
+    "min": 0.0,
+    "max": 0.11928000301122665
+  },
+  "act_BridgeOfTheNose": {
+    "min": 0.0,
+    "max": 0.10814999788999557
+  },
+  "act_LDepressorLabiiInferiorisLandmark": {
+    "min": 0.0,
+    "max": 0.3659000098705292
+  },
+  "act_RDepressorLabiiInferiorisLandmark": {
+    "min": 0.0,
+    "max": 0.38043999671936035
+  },
+  "act_lFrontalisOuterLandmark": {
+    "min": 0.0,
+    "max": 0.26014000177383423
+  },
+  "act_rFrontalisOuterLandmark": {
+    "min": 0.0,
+    "max": 0.24081000685691833
+  },
+  "act_LOrbicularisOculi": {
+    "min": 0.0,
+    "max": 0.9878600239753723
+  },
+  "act_ROrbicularisOculi": {
+    "min": 0.0,
+    "max": 0.9801599979400635
+  },
+  "str_lZygomaticusMajorLandmark": {
+    "min": -0.17980000376701355,
+    "max": 0.22457000613212585
+  },
+  "str_lDepressorAnguliOrisLandmark": {
+    "min": -0.15148000419139862,
+    "max": 0.1698399931192398
+  },
+  "str_lRisoriusLandmark": {
+    "min": -0.2307399958372116,
+    "max": 0.16268999874591827
+  },
+  "str_OrbicularisOrisCenter": {
+    "min": -0.17231999337673187,
+    "max": 0.48956000804901123
+  },
+  "str_rZygomaticusMajorLandmark": {
+    "min": -0.17136000096797943,
+    "max": 0.22134000062942505
+  },
+  "str_rDepressorAnguliOrisLandmark": {
+    "min": -0.1839199960231781,
+    "max": 0.1751600056886673
+  },
+  "str_rRisoriusLandmark": {
+    "min": -0.1914999932050705,
+    "max": 0.14940999448299408
+  },
+  "str_lFrontalisInsideLandmark": {
+    "min": -0.1594800055027008,
+    "max": 0.10196000337600708
+  },
+  "str_LCorrugatorSuperciliiLandmark": {
+    "min": -0.21543000638484955,
+    "max": 0.3894999921321869
+  },
+  "str_rFrontalisInsideLandmark": {
+    "min": -0.15444999933242798,
+    "max": 0.09843000024557114
+  },
+  "str_RCorrugatorSuperciliiLandmark": {
+    "min": -0.2016499936580658,
+    "max": 0.38468000292778015
+  },
+  "str_RLevatorLabiiSuperiorisLandmark": {
+    "min": -0.13398000597953796,
+    "max": 0.16253000497817993
+  },
+  "str_LLevatorLabiiSuperiorisLandmark": {
+    "min": -0.11928000301122665,
+    "max": 0.17971999943256378
+  },
+  "str_BridgeOfTheNose": {
+    "min": -0.10814999788999557,
+    "max": 0.4927099943161011
+  },
+  "str_LDepressorLabiiInferiorisLandmark": {
+    "min": -0.3659000098705292,
+    "max": 0.07467000186443329
+  },
+  "str_RDepressorLabiiInferiorisLandmark": {
+    "min": -0.38043999671936035,
+    "max": 0.08121000230312347
+  },
+  "str_lFrontalisOuterLandmark": {
+    "min": -0.26014000177383423,
+    "max": 0.15842999517917633
+  },
+  "str_rFrontalisOuterLandmark": {
+    "min": -0.24081000685691833,
+    "max": 0.17534999549388885
+  },
+  "str_LOrbicularisOculi": {
+    "min": -0.9878600239753723,
+    "max": 0.9620100259780884
+  },
+  "str_ROrbicularisOculi": {
+    "min": -0.9801599979400635,
+    "max": 1.0642900466918945
+  },
+  "str_JawSlide": {
+    "min": -0.07624000310897827,
+    "max": 0.07661999762058258
+  },
+  "iris_LEye_x": {
+    "min": -0.2045300006866455,
+    "max": 0.2504900097846985
+  },
+  "iris_LEye_y": {
+    "min": -32.62944030761719,
+    "max": 34.08345031738281
+  },
+  "iris_REye_x": {
+    "min": -0.20104999840259552,
+    "max": 0.22481000423431396
+  },
+  "iris_REye_y": {
+    "min": -20.97665023803711,
+    "max": 27.127880096435547
+  }
+}

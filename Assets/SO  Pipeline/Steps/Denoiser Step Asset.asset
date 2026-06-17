@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4be24e6dc4246dda22ba3a39284066, type: 3}
+  m_Name: Denoiser Step Asset
+  m_EditorClassIdentifier: Assembly-CSharp::FaceMuscle.FaceRigPipeline.Core.DenoiserStepAsset
+  _modelAsset: {fileID: 5022602860645237092, guid: 13b82f220af684dc99f21efd62387954, type: 3}
+  _columnsJson: {fileID: 4900000, guid: ca507dac26db946f3b5ee1e2f673ae48, type: 3}
+  _normStatsJson: {fileID: 4900000, guid: 0c76a355ee8c74811a790ab097e4ff76, type: 3}
+  _backend: 512
+  _strength: 1
+  _debugLog: 0

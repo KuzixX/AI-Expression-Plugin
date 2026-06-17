@@ -1,0 +1,236 @@
+================================================================================
+                    FACE RIG — АНАЛИЗ И АРХИТЕКТУРА
+                           2026-03-18
+================================================================================
+
+
+== 1. СУЩНОСТИ И ФУНКЦИОНАЛ ПРОЕКТА ==========================================
+
+--- Захват и калибровка ---
+- FaceLandmarkerRunner        : обёртка MediaPipe, отдаёт сырые лендмарки
+- SFaceCalibration            : калибровка нейтральной позы (усреднение фреймов)
+- MotionCaptureCalibrationData: ScriptableObject — нейтральные лендмарки + описания мышц + описания глаз
+- LandmarkFrame               : readonly struct, пара (Current, Neutral) списков позиций
+
+--- Вычислительный пайплайн ---
+- SStreamMCActivationRAW      : захват фрейма + вычисление стрейнов, активаций, позиций радужки
+- SStrainSolver               : (currentDist - neutralDist) / neutralDist
+- SActivationSolver           : Clamp01(-strain * gain), линейный маппинг
+- IActivationStream           : интерфейс — Activations, Strains, IrisPositions, LastFrame
+
+--- Драйверы костей ---
+- FaceDriverBase              : абстрактный MonoBehaviour, ищет IActivationStream
+- SBonePositionDriver         : позиция = нейтраль + сумма взвешенных оффсетов к таргетам
+- SJawDriver                  : ротация (открытие по стрейну) + трансляция (сдвиг по лендмаркам)
+- SEyeDriver                  : двигает таргет по дельте радужки, кость делает LookAt
+
+--- Данные и дескрипторы ---
+- FaceLandmarkDescription     : лендмарк-источник → список таргетов (пары idx + tag)
+- EyeLandmarkDescription      : индекс радужки + оси X/Y (пары start/end лендмарков)
+- EyeAxisSpace                : startIdx, endIdx — определяет ось в пространстве лендмарков
+- FaceLandMarkTag             : enum всех отслеживаемых точек лица
+- FaceMuscleAnchorTag         : enum всех мышечных якорей
+- JointTarget                 : таргет-трансформ + вес + тег
+
+--- Эдиторные тулзы ---
+- MusclesToolbox              : EditorWindow, хаб для модулей
+- SplineBrushModule           : рисование мышечных сплайнов по мешу (Draw/Slide)
+- CurveDefaultsModule         : сохранение/восстановление дефолтных поз кривых
+- ExpressionCaptureModule     : захват выражений, расчёт strain/activation
+- PersonData                  : ScriptableObject — сохранённые выражения персонажа
+- BonePoseRecorder            : запись/восстановление поз костей
+- BoneDefaultPose             : ScriptableObject — дефолтные позы костей
+
+--- Дебаг ---
+- SFaceLandmarkDebugDrawer    : отрисовка лендмарков на Canvas, цвета по тегам
+- SFaceDriversDebugDrawer     : отрисовка связей драйверов
+- SDebugLandmarks             : дебаг лендмарков в 3D
+
+
+== 2. ПРОБЛЕМЫ И СЛОЖНОСТИ ====================================================
+
+--- 2.1 Калибровка — хрупкое место ---
+Вся система = дельта от нейтрали. Сдвинулся, сменил свет, повернул голову —
+нейтраль поехала, всё поехало.
+
+Решения:
+- Адаптивная нейтраль: EMA по последним N секундам покоя (дрифт-коррекция)
+- Детекция покоя: дисперсия лендмарков < порога за 0.5с → подтягиваем нейтраль
+- Нормализация по расстоянию между глазами (убирает масштаб/расстояние)
+
+--- 2.2 Линейный маппинг стрейн → активация ---
+Clamp01(-strain * gain) — один коэффициент на все мышцы.
+Мелкие движения не ловятся ИЛИ крупные залипают в 1.0.
+
+Решения:
+- AnimationCurve per-muscle в CalibrationData
+- Авто-калибровка диапазона: "улыбнись максимально" → max strain → нормализация
+
+--- 2.3 Нет head stabilization ---
+MediaPipe отдаёт в координатах камеры. Поворот головы = фантомные активации.
+На прямом лице работает, при повороте 15° — губы/брови/челюсть дёргаются.
+
+Решения:
+- Rigid body alignment (Procrustes) перед вычислением стрейнов
+- Выравнивание текущего фрейма на нейтральный по стабильным точкам
+  (переносица, внешние углы глаз)
+
+--- 2.4 LookAt для глаз ---
+LookAt использует world Y как up, не учитывает ось кости.
+Gimbal lock при определённых углах.
+
+Решения:
+- Quaternion.FromToRotation(neutralForward, toTarget) + angle clamp
+- Up-вектор из parent кости
+
+--- 2.5 SStreamMCActivationRAW — бог-объект ---
+Захват + виртуальные лендмарки + стрейны + активации + радужка.
+Тяжело расширять, тестировать, подменять.
+
+Решения:
+- Разделить на ILandmarkSource + отдельные процессоры
+- Pipeline архитектура (см. раздел 3)
+
+--- 2.6 Нет записи анимации ---
+IActivationStream — readonly словари, нет timestamps. Нечего записывать.
+
+Решения:
+- Timestamp/FrameIndex в контексте
+- Recorder как шаг пайплайна
+- Player реализует тот же интерфейс что и живой захват
+
+--- 2.7 Per-person данные смешаны с описанием мышц ---
+MotionCaptureCalibrationData хранит и нейтральные лендмарки (per-person)
+и описания мышц (общие). Второй человек = дубликат всего.
+
+Решения:
+- Разделить: FaceRigProfile (мышцы, маппинг) + PersonCalibration (нейтраль, gain)
+
+--- 2.8 Симметрия вручную ---
+Левые и правые мышцы описываются отдельно. Ошибка = асимметрия.
+
+Решения:
+- Задавать одну сторону + таблица зеркальных MediaPipe индексов → автогенерация
+
+
+== 3. АРХИТЕКТУРА ПАЙПЛАЙНА (ScriptableObject Pipeline) =======================
+
+--- 3.1 Идея ---
+Данные текут через цепочку обработчиков. Каждый шаг читает из общего контекста,
+модифицирует/дополняет, передаёт дальше:
+
+  Frame -> [Solver] -> Strains + Activations -> [NoiseFilter] ->
+  -> [ML Smoother] -> [Recorder] -> [Drivers] -> кости
+
+--- 3.2 FaceRigContext — общий контекст ("чемодан с данными") ---
+Класс (не struct!), создаётся один раз в Start(), переиспользуется каждый кадр.
+Ноль аллокаций в горячем пути.
+
+  public class FaceRigContext
+  {
+      public LandmarkFrame Frame;
+      public readonly Dictionary<FaceMuscleAnchorTag, float> Strains      = new();
+      public readonly Dictionary<FaceMuscleAnchorTag, float> Activations  = new();
+      public readonly Dictionary<FaceLandMarkTag, Vector2>   IrisPositions = new();
+
+      public void Clear()
+      {
+          Strains.Clear();
+          Activations.Clear();
+          IrisPositions.Clear();
+          Frame = default;
+      }
+  }
+
+Почему класс, а не struct:
+- Словари внутри — reference types, всё равно на хипе
+- Struct с ссылочными полями даёт ложное ощущение value semantics
+- Если забыть ref при передаче — копия struct, но словари общие = скрытый баг
+- Класс аллоцируется один раз и переиспользуется = ноль GC
+
+--- 3.3 IPipelineStep — интерфейс шага ---
+
+  public interface IPipelineStep
+  {
+      void Execute(FaceRigContext ctx);
+  }
+
+--- 3.4 PipelineStepAsset — ScriptableObject обёртка ---
+
+  public abstract class PipelineStepAsset : ScriptableObject
+  {
+      public abstract IPipelineStep CreateStep();
+  }
+
+--- 3.5 FaceRigPipeline — ассет пайплайна ---
+
+  [CreateAssetMenu(menuName = "FaceRig/Pipeline")]
+  public class FaceRigPipeline : ScriptableObject
+  {
+      public PipelineStepAsset[] steps;
+  }
+
+Можно иметь Pipeline_MediaPipe.asset, Pipeline_Playback.asset, Pipeline_Debug.asset
+и переключать одним полем.
+
+--- 3.6 StartUp — композишн рут ---
+
+  public class StartUp : MonoBehaviour
+  {
+      [SerializeField] private FaceRigPipeline _pipeline;
+      private IPipelineStep[] _runtimeSteps;
+      private FaceRigContext  _ctx;
+
+      private void Start()
+      {
+          _ctx = new FaceRigContext();
+
+          // Шаги из ассета (солверы, фильтры, рекордер)
+          var assetSteps = _pipeline.steps.Select(s => s.CreateStep());
+
+          // Драйверы со сцены (MonoBehaviour, реализуют IPipelineStep)
+          var sceneDrivers = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+              .OfType<IPipelineStep>();
+
+          _runtimeSteps = assetSteps.Concat(sceneDrivers).ToArray();
+      }
+
+      private void Update()
+      {
+          _ctx.Clear();
+          foreach (var step in _runtimeSteps)
+              step.Execute(_ctx);
+      }
+  }
+
+--- 3.7 Таблица шагов ---
+
+  Шаг                    | Читает из ctx      | Пишет в ctx
+  -----------------------|--------------------|--------------------------
+  LandmarkCaptureStep    | —                  | Frame
+  StrainSolverStep       | Frame              | Strains
+  ActivationSolverStep   | Strains            | Activations
+  IrisSolverStep         | Frame              | IrisPositions
+  NoiseFilterStep        | Activations        | Activations (модифицирует)
+  MLSmootherStep         | Activations        | Activations (модифицирует)
+  AnimationRecorderStep  | всё                | — (пишет в клип)
+  BoneDriverStep         | Activations        | — (двигает кости)
+  JawDriverStep          | Strains + Frame    | — (двигает кость)
+  EyeDriverStep          | IrisPositions      | — (двигает кости)
+
+--- 3.8 Драйверы на сцене ---
+Драйверы = MonoBehaviour (нужны ссылки на кости в сцене).
+Реализуют IPipelineStep. StartUp собирает их со сцены и добавляет в конец
+массива шагов. Шаги-обработчики = ScriptableObject (не зависят от сцены).
+
+
+== 4. ПРИОРИТЕТЫ ===============================================================
+
+  #  | Что                               | Почему первое
+  ---|-----------------------------------|------------------------------------------
+  1  | Head stabilization (Procrustes)   | Без этого риг не работает при повороте
+  2  | Нелинейный маппинг (AnimationCurve)| Без этого нельзя настроить мышцы
+  3  | Адаптивная нейтраль               | Дрифт убивает юзабилити
+  4  | Разделение CalibrationData        | Блокирует мультиперсон
+  5  | Pipeline архитектура              | Фундамент для записи/playback/ML
+  6  | Запись/воспроизведение            | Нужна, но без 1-3 записывать нечего
