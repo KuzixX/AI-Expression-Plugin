@@ -1,0 +1,13 @@
+# Dependencies for the motion_groups_v7 expression-transfer pipeline (Windows).
+# Installed automatically into .venv-win by run_transfer_gui.bat.
+# Pinned to ranges that ship Windows wheels for Python 3.9-3.12.
+
+numpy<2                 # mediapipe/open3d are happiest on the numpy 1.x ABI
+scipy
+scikit-learn
+h5py
+pillow
+matplotlib
+trimesh
+open3d
+mediapipe

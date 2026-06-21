@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 motion_groups_v7 — GUI for batch transfer of an expression set onto a folder
 of heads.
 
@@ -7,10 +7,21 @@ Single screen: pick reference HDF5 (neutral + expressions), heads folder and
 output HDF5; tune parameters; hit "Transfer" → get one HDF5 with every head ×
 every expression. No debug windows.
 
-Run:
-  cd /Users/kuzix/Documents/GitHub/Muscle-autoskinner
+The code is cross-platform; only the launch differs per OS.
+
+Run (macOS / Linux):
+  cd <repo root>
   source .venv/bin/activate
   python python/scripts/motion_groups_v7/transfer_gui.py
+
+Run (Windows):
+  # easiest: double-click python\scripts\motion_groups_v7\run_transfer_gui.bat
+  # (it builds .venv-win + installs deps on first run, then launches this GUI)
+  # or manually from PowerShell at the repo root:
+  py -3.9 -m venv .venv-win
+  .\.venv-win\Scripts\Activate.ps1
+  pip install -r python\scripts\motion_groups_v7\requirements-windows.txt
+  python python\scripts\motion_groups_v7\transfer_gui.py
 """
 import threading
 import tkinter as tk
