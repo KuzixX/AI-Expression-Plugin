@@ -49,5 +49,8 @@ namespace FaceRig.Data
 
         // Горизонтальный сдвиг челюсти (вычисляется из лэндмарков).
         JawSlide,
+        
+        LOrbicularisOculiDown,
+        ROrbicularisOculiDown,
     }
 }

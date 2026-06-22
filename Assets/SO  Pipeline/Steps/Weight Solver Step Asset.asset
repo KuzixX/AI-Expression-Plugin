@@ -13,31 +13,6 @@ MonoBehaviour:
   m_Name: Weight Solver Step Asset
   m_EditorClassIdentifier: Assembly-CSharp::FaceMuscle.FaceRigPipeline.Steps.WeightSolverStepAsset
   muscleWeights:
-  - tag: 22
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
   - tag: 15
     curve:
       serializedVersion: 2
@@ -45,20 +20,38 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 0.10940484
+        outSlope: 0.10940484
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.5654541
+      - serializedVersion: 3
+        time: 0.14701775
+        value: 0.11144563
+        inSlope: 2.45433
+        outSlope: 2.45433
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.32727876
+      - serializedVersion: 3
+        time: 0.26153216
+        value: 0.45415482
+        inSlope: 2.4886808
+        outSlope: 2.4886808
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.061354585
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.04571456
+        outSlope: 0.04571456
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.13451669
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -70,20 +63,38 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 0.10940484
+        outSlope: 0.10940484
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.5654541
+      - serializedVersion: 3
+        time: 0.14701775
+        value: 0.11144563
+        inSlope: 2.45433
+        outSlope: 2.45433
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.32727876
+      - serializedVersion: 3
+        time: 0.26153216
+        value: 0.45415482
+        inSlope: 2.4886808
+        outSlope: 2.4886808
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.061354585
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.04571456
+        outSlope: 0.04571456
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.13451669
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
