@@ -238,3 +238,8 @@ htmlcov/
 python/data
 
 python/scripts/debug_output/
+
+# Generated pipeline data (HDF5) - too large for GitHub
+python/scripts/motion_groups_v6/data/
+python/scripts/motion_groups_v7/data/
+*.h5
