@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4de53581e33243f8bb5d0cee963bb6f, type: 3}
   m_Name: Smoothing Step Asset
   m_EditorClassIdentifier: Assembly-CSharp::FaceMuscle.FaceRigPipeline.Core.SmoothingStepAsset
-  _smoothing: 0.35
+  _smoothing: 0
   _irisSmooothing: 0.6
   _irisClamp: 1
