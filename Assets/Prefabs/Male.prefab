@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: -7267094325442923190, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: -6934816746525399949, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: m_Icon
       value: 
@@ -206,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: m_Quality
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3887185075125053422, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: m_UpdateWhenOffscreen
@@ -215,7 +219,7 @@ PrefabInstance:
     - target: {fileID: -3887185075125053422, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: eacfa5e3fdf164245bdb8633db32a382, type: 2}
+      objectReference: {fileID: 2100000, guid: 73b670bcacf924fa09d3905be2755910, type: 2}
     - target: {fileID: -3485706175452305718, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.33635065
@@ -352,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male
       objectReference: {fileID: 0}
+    - target: {fileID: 1473493118741974356, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1560992704662376388, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06518347
@@ -525,6 +533,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5591782756519945754, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6293969004586060996}
+    - targetCorrespondingSourceObject: {fileID: 1473493118741974356, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5729969560837775271}
     - targetCorrespondingSourceObject: {fileID: -5909218362300886351, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5804644954005671644}
@@ -549,6 +560,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -6546573629878457216, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 387562762318284810}
+    - targetCorrespondingSourceObject: {fileID: -7267094325442923190, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7806097308695082967}
     - targetCorrespondingSourceObject: {fileID: 4120895751041903997, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5028936663084653270}
@@ -879,6 +893,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4321562287441552694, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
   m_PrefabInstance: {fileID: 2849265066237673232}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2194047530624954928 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4177174285619531040, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+  m_PrefabInstance: {fileID: 2849265066237673232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2214297265030451821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4120895751041903997, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
@@ -986,6 +1005,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -7745754541703103325, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
   m_PrefabInstance: {fileID: 2849265066237673232}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3687186179774618498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7736872788346755950, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+  m_PrefabInstance: {fileID: 2849265066237673232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3744876492138459716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1473493118741974356, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+  m_PrefabInstance: {fileID: 2849265066237673232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5729969560837775271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3744876492138459716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fa05f773de4cbab65322b9688b9320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaceMuscle.FaceRigPipeline.Drivers.MuscleDriver
+  targets:
+  - targetTag: 16
+    target: {fileID: 4032985365802071106}
+    activation: 0
+    weight: 1.5
+  currentPosition: {fileID: 3687186179774618498}
+  neutralPosition: {fileID: 2194047530624954928}
 --- !u!4 &3878651652771371563 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7901246294810827461, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
@@ -1061,6 +1109,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -7206660726131456604, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
   m_PrefabInstance: {fileID: 2849265066237673232}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4372018106922502746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7267094325442923190, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+  m_PrefabInstance: {fileID: 2849265066237673232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7806097308695082967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372018106922502746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fa05f773de4cbab65322b9688b9320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaceMuscle.FaceRigPipeline.Drivers.MuscleDriver
+  targets:
+  - targetTag: 15
+    target: {fileID: 8047153396980869217}
+    activation: 0
+    weight: 1.5
+  currentPosition: {fileID: 4739035558824426380}
+  neutralPosition: {fileID: 8209871452470321131}
 --- !u!4 &4535507073661899926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7387094314299085946, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
@@ -1074,6 +1146,11 @@ Transform:
 --- !u!4 &4718995431873221338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7419577223620341194, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+  m_PrefabInstance: {fileID: 2849265066237673232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4739035558824426380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7372094348108367004, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
   m_PrefabInstance: {fileID: 2849265066237673232}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5001016685028653528 stripped
@@ -1326,6 +1403,11 @@ Transform:
 --- !u!4 &8198053905845320996 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6219411629284475444, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
+  m_PrefabInstance: {fileID: 2849265066237673232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8209871452470321131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6225608481057775867, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
   m_PrefabInstance: {fileID: 2849265066237673232}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8219877606118971390 stripped
