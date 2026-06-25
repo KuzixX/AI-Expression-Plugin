@@ -215,7 +215,7 @@ PrefabInstance:
     - target: {fileID: -3887185075125053422, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 73b670bcacf924fa09d3905be2755910, type: 2}
+      objectReference: {fileID: 2100000, guid: eacfa5e3fdf164245bdb8633db32a382, type: 2}
     - target: {fileID: -3485706175452305718, guid: f75459ae95d5c44b1b4186341dd27a7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.33635065
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   _landmarkYAxis: 2
   _invertX: 0
   _invertY: 0
-  _gain: 5
+  _gain: 8
   _lastOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &4190991222316154671 stripped
 Transform:
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   _landmarkYAxis: 2
   _invertX: 0
   _invertY: 0
-  _gain: 5
+  _gain: 8
   _lastOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &8713705091451261808 stripped
 Transform:
