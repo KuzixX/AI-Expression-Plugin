@@ -895,6 +895,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 47.411, y: -151.637, z: -29.196}
+--- !u!4 &1284787266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7359408267669968373, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
+  m_PrefabInstance: {fileID: 8876910321674191343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603378501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8798066379235852099, guid: 5713b959e3c77a58fb258133fc8e4aef, type: 3}
@@ -1596,19 +1601,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 387562762318284810, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
       propertyPath: targets.Array.data[0].weight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 613613536485347649, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
       propertyPath: targets.Array.data[0].weight
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 943244043539804402, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[0].weight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 943244043539804402, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[1].weight
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2305884817209415931, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1654,41 +1651,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male
       objectReference: {fileID: 0}
-    - target: {fileID: 5729969560837775271, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[0].weight
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5906252976245694290, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
       propertyPath: targets.Array.data[0].weight
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6293969004586060996, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
+    - target: {fileID: 8377475512827417150, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
       propertyPath: targets.Array.data[0].weight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6293969004586060996, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[1].weight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6293969004586060996, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[0].activation
-      value: 0.083
+    - target: {fileID: 8613686056569416009, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
+      propertyPath: _maxAngle
+      value: 60
       objectReference: {fileID: 0}
-    - target: {fileID: 7806097308695082967, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[0].weight
-      value: 2.5
+    - target: {fileID: 8613686056569416009, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
+      propertyPath: _maxOpenDistance
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7892398641376012034, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+    - target: {fileID: 8613686056569416009, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
+      propertyPath: _neutralRotation
       value: 
-      objectReference: {fileID: 2100000, guid: 73b670bcacf924fa09d3905be2755910, type: 2}
-    - target: {fileID: 8377475512827417150, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[0].weight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8377475512827417150, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
-      propertyPath: targets.Array.data[0].activation
-      value: 0
+      objectReference: {fileID: 1284787266}
+    - target: {fileID: 8613686056569416009, guid: 2f5fef50e14c21b4082393239c7f0109, type: 3}
+      propertyPath: _enableOpenRotation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

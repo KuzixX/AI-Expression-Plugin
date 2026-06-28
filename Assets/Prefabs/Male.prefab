@@ -634,7 +634,7 @@ MonoBehaviour:
   - targetTag: 15
     target: {fileID: 4032985365802071106}
     activation: 0
-    weight: 1
+    weight: 2
   - targetTag: 6
     target: {fileID: 3173393996185833555}
     activation: 0.07616215
@@ -756,7 +756,7 @@ MonoBehaviour:
   - targetTag: 16
     target: {fileID: 8047153396980869217}
     activation: 0
-    weight: 1
+    weight: 2
   - targetTag: 7
     target: {fileID: 9036612197470652712}
     activation: 0.08961321
@@ -865,12 +865,12 @@ MonoBehaviour:
   targets:
   - targetTag: 18
     target: {fileID: 4718995431873221338}
-    activation: 0.1673866
-    weight: 4
+    activation: 0.083
+    weight: 2
   - targetTag: 7
     target: {fileID: 9036612197470652712}
     activation: 0.08961321
-    weight: 0.5
+    weight: 1
   currentPosition: {fileID: 3612834557673746644}
   neutralPosition: {fileID: 7328913947457541163}
 --- !u!4 &1615803426127711706 stripped
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   - targetTag: 16
     target: {fileID: 4032985365802071106}
     activation: 0
-    weight: 1.5
+    weight: 2.5
   currentPosition: {fileID: 3687186179774618498}
   neutralPosition: {fileID: 2194047530624954928}
 --- !u!4 &3878651652771371563 stripped
@@ -1097,11 +1097,11 @@ MonoBehaviour:
   - targetTag: 17
     target: {fileID: 1045417836515866207}
     activation: 0.1719256
-    weight: 4
+    weight: 2
   - targetTag: 6
     target: {fileID: 3173393996185833555}
     activation: 0.07616215
-    weight: 0.5
+    weight: 1
   currentPosition: {fileID: 3525965949440470850}
   neutralPosition: {fileID: 711007455703287494}
 --- !u!4 &4356761206056008372 stripped
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   - targetTag: 15
     target: {fileID: 8047153396980869217}
     activation: 0
-    weight: 1.5
+    weight: 2.5
   currentPosition: {fileID: 4739035558824426380}
   neutralPosition: {fileID: 8209871452470321131}
 --- !u!4 &4535507073661899926 stripped
@@ -1284,7 +1284,7 @@ MonoBehaviour:
   - targetTag: 1
     target: {fileID: 539580652694172960}
     activation: 0
-    weight: 4
+    weight: 6
   - targetTag: 5
     target: {fileID: 2390692524451429432}
     activation: 0.0029340552
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   - targetTag: 0
     target: {fileID: 8713705091451261808}
     activation: 0
-    weight: 4
+    weight: 6
   - targetTag: 4
     target: {fileID: 138251193300992528}
     activation: 0

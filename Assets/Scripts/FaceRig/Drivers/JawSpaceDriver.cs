@@ -47,6 +47,23 @@ namespace FaceMuscle.FaceRigPipeline.Drivers
         // последнее посчитанное смещение — удобно для дебага в Inspector
         [SerializeField] private Vector3 _lastOffset;
 
+        [Header("Jaw Open → Rotation")]
+        [Tooltip("Включить доворот челюсти по степени открытия.")]
+        [SerializeField] private bool _enableOpenRotation;
+        [Tooltip("Локальная ось вращения челюсти (в её собственном пространстве). Напр. (1,0,0).")]
+        [SerializeField] private Vector3 _rotationAxis = Vector3.right;
+        [Tooltip("Максимальный угол поворота (градусы) при полном открытии челюсти.")]
+        [SerializeField] private float _maxAngle = 28f;
+        [Tooltip("Расстояние jaw от нейтрали, при котором открытие = максимум (1). Задаётся вручную.")]
+        [SerializeField] private float _maxOpenDistance = 1f;
+        [Tooltip("Опорная нейтральная ротация. Пусто — берётся стартовая localRotation джойнта.")]
+        [SerializeField] private Transform _neutralRotation;
+
+        [SerializeField] private float _lastOpenAmount;   // дебаг: 0..1
+
+        private bool _rotCaptured;
+        private Quaternion _capturedNeutralRot = Quaternion.identity;
+
         public void Execute(FaceRigContext ctx)
         {
             if (_currentPosition == null || _neutralPosition == null || _jawSpace == null) return;
@@ -69,6 +86,33 @@ namespace FaceMuscle.FaceRigPipeline.Drivers
             _lastOffset = offset;
 
             _currentPosition.position = _neutralPosition.position + offset;
+
+            if (_enableOpenRotation)
+                ApplyOpenRotation(offset.magnitude);
+        }
+
+        // Доворот челюсти вокруг выбранной локальной оси в зависимости от того,
+        // насколько jaw уехал от нейтрали (открытие = dist / maxOpenDistance).
+        private void ApplyOpenRotation(float distanceFromNeutral)
+        {
+            if (!_rotCaptured)
+            {
+                _capturedNeutralRot = _currentPosition.localRotation;
+                _rotCaptured = true;
+            }
+
+            float t = _maxOpenDistance > 1e-6f
+                ? Mathf.Clamp01(distanceFromNeutral / _maxOpenDistance)
+                : 0f;
+            _lastOpenAmount = t;
+
+            float angle = _maxAngle * t;
+            Quaternion baseRot = _neutralRotation != null
+                ? _neutralRotation.localRotation
+                : _capturedNeutralRot;
+
+            _currentPosition.localRotation =
+                baseRot.normalized * Quaternion.AngleAxis(angle, _rotationAxis.normalized);
         }
 
         private Vector3 AxisVector(LocalAxis axis)
